@@ -1,6 +1,6 @@
 {
   "name": "gulp-rev-easy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "easy add hash to asset path uc.js -> uc.js?v=afb23 or simple add date uc.js -> uc.js?v=201503031214",
   "main": "index.js",
   "scripts": {

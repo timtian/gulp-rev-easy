@@ -78,7 +78,7 @@ module.exports = function (options) {
             }
 
             var newname = options.transformPath(src, revv);
-            $asset.attr(attributes.srcAttribute, newname);
+            $asset.attr(attributes.src, newname);
             gutil.log(src +"-->" + newname);
           }
         }
