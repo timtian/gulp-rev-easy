@@ -3,7 +3,6 @@
 ```
 $ npm install gulp-rev-easy --save-dev
 ```
-----------
 #Examples
 ```
 assets\index.css
@@ -57,7 +56,6 @@ gulp reveasy
 </body>
 </html>
 ```
----
 
 #Options
 
