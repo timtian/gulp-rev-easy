@@ -13,7 +13,7 @@ module.exports = function (options) {
     cwd: '',
     suffix: 'v',
     fileTypes: ['js', 'css', 'img'],
-    hashLength : 5,
+    hashLength : 8,
     dateFormat : 'yyyymmddHHMM',
     revType:'hash',
     transformPath : function (orgPath, rev) {
@@ -36,7 +36,12 @@ module.exports = function (options) {
     }
   };
 
-  options = _.merge(defaultOptions, options);
+  options = _.merge(defaultOptions, options, function  (a, b) {
+    if(_.isArray(b)){
+      return b;
+    }
+  });
+
 
   return through.obj(function (file, enc, cb) {
 
