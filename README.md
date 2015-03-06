@@ -3,14 +3,14 @@
 ```
 $ npm install gulp-rev-easy --save-dev
 ```
-#Examples
+# Examples
 ```
 assets\index.css
 assets\index.css
 test.html
 gulpfile.js
 ```
-###Input
+### Input
 ```html
 //test.html
 <!doctype html>
@@ -28,8 +28,8 @@ gulpfile.js
 </html>
 ```
 
-###Useage
-```javascript
+### Useage
+```js
 //gulpfile.js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
@@ -44,7 +44,7 @@ gulp.task("reveasy", function (argument) {
 ```
 gulp reveasy
 ```
-###Output
+### Output
 ```html
 <!doctype html>
 <html lang="en">
@@ -61,7 +61,7 @@ gulp reveasy
 </html>
 ```
 
-#Options
+# Options
 
  - cwd
  - revType
@@ -72,7 +72,7 @@ gulp reveasy
  - elementAttributes
  - transformPath
 
-##options.cwd
+## options.cwd
 
 
     type:string
@@ -80,8 +80,8 @@ gulp reveasy
     
     set working directory for your assets
 
-####example
-```
+#### example
+```js
 /*
 test\assets\index.css
 test\assets\index.css
@@ -99,7 +99,7 @@ gulp.task("reveasy", function (argument) {
 })
 ```
 
-##options.revType
+## options.revType
 
 
     type:['hash'|date']
@@ -107,8 +107,8 @@ gulp.task("reveasy", function (argument) {
     
     set rev type 
 
-####example
-```
+#### example
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -129,12 +129,12 @@ gulp.task("reveasy", function (argument) {
 	href="assets/index.css?max_age=1024&amp;v=201503061144">
 ```
 
-##options.dateFormat
+## options.dateFormat
 
     type:string
     default:'yyyymmddHHMM'
     
-```
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -145,18 +145,18 @@ gulp.task("reveasy", function (argument) {
 		
 })
 ```
-####Output
+#### Output
 ```html
 <link type="text/css" rel="stylesheet" media="all" 
 	href="assets/index.css?max_age=1024&amp;v=1503061144">
 ```
 
-##options.hashLength
+## options.hashLength
 
     type:integer
     default:8
     
-```
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -167,7 +167,7 @@ gulp.task("reveasy", function (argument) {
 		
 })
 ```
-####Output
+#### Output
 
 ```html
 <!--default output-->
@@ -180,12 +180,12 @@ gulp.task("reveasy", function (argument) {
 	src="assets/audrey-hepburn.jpg?v=7c5d1">
 ```
 
-##options.suffix
+## options.suffix
 
     type:string
     default:v
     
-```
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -196,7 +196,7 @@ gulp.task("reveasy", function (argument) {
 		
 })
 ```
-####Output
+#### Output
 
 ``` html
 <!--default output-->
@@ -207,12 +207,12 @@ gulp.task("reveasy", function (argument) {
 <img src="assets/audrey-hepburn.jpg?hashkey=7c5d110d">
 ```
 
-##options.fileTypes
+## options.fileTypes
 
     type:array
     default:['js','css','img']
     
-```
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -223,7 +223,7 @@ gulp.task("reveasy", function (argument) {
 		
 })
 ```
-####Output
+#### Output
 
 ```html
 <!doctype html>
@@ -241,8 +241,8 @@ gulp.task("reveasy", function (argument) {
 </html>
 ```
 
-##options.elementAttributes
-```javascript
+## options.elementAttributes
+```js
 
     /*
     how find target element 
@@ -275,7 +275,7 @@ gulp.task("reveasy", function (argument) {
     }
 ```   
 
-```
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -292,7 +292,7 @@ gulp.task("reveasy", function (argument) {
 		.pipe(gulp.dest("./dist"))
 })
 ```
-####Output
+#### Output
 ```html
   <!--default out-->
   <img data-src="assets/audrey-hepburn.jpg" 
@@ -304,7 +304,7 @@ gulp.task("reveasy", function (argument) {
   	src="assets/audrey-hepburn.jpg">
 ```
 
-```
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -321,11 +321,11 @@ gulp.task("reveasy", function (argument) {
 		.pipe(gulp.dest("./dist"))
 })
 ```
-##options.transformPath
+## options.transformPath
     type:function
     default:function(orgPath, ver){}
 custom change path
-```
+```js
 var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
@@ -342,7 +342,7 @@ gulp.task("reveasy", function (argument) {
 		.pipe(gulp.dest("./dist"))
 })
 ```
-####Output
+#### Output
 ```html
   <!--default out-->
   <img data-src="assets/audrey-hepburn.jpg" 
