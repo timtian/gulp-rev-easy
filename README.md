@@ -1,6 +1,5 @@
 # gulp-rev-easy 
 
-标签（空格分隔）： gulp rev hash easy url 
 
 # Install
 ```
