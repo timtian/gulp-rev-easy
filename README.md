@@ -1,23 +1,16 @@
 # gulp-rev-easy 
-
-
 # Install
 ```
 $ npm install gulp-rev-easy --save-dev
 ```
-
-
 ----------
 #Examples
-
-
 ```
 assets\index.css
 assets\index.css
 test.html
 gulpfile.js
 ```
-
 ###Input
 ```html
 //test.html
