@@ -110,10 +110,12 @@ gulp.task("reveasy", function (argument) {
 ```
 
 ```html
-<link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024">
+<link type="text/css" rel="stylesheet" media="all" 
+	href="assets/index.css?max_age=1024">
 ```
 ```html
-<link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024&amp;v=201503061144">
+<link type="text/css" rel="stylesheet" media="all" 
+	href="assets/index.css?max_age=1024&amp;v=201503061144">
 ```
 
 ##options.dateFormat
@@ -134,7 +136,8 @@ gulp.task("reveasy", function (argument) {
 ```
 ####Output
 ```html
-<link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024&amp;v=1503061144">
+<link type="text/css" rel="stylesheet" media="all" 
+	href="assets/index.css?max_age=1024&amp;v=1503061144">
 ```
 
 ##options.hashLength
@@ -157,11 +160,13 @@ gulp.task("reveasy", function (argument) {
 
 ```html
 <!--default output-->
-<img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg?v=7c5d110d">
+<img data-src="assets/audrey-hepburn.jpg" 
+	src="assets/audrey-hepburn.jpg?v=7c5d110d">
 ```
 -->
 ```html
-<img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg?v=7c5d1">
+<img data-src="assets/audrey-hepburn.jpg" 
+	src="assets/audrey-hepburn.jpg?v=7c5d1">
 ```
 
 ##options.suffix
@@ -214,7 +219,8 @@ gulp.task("reveasy", function (argument) {
 <html lang="en">
 <head>
   <title>gulp-rev-easy</title>
-  <link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024">
+  <link type="text/css" rel="stylesheet" media="all" 
+  	href="assets/index.css?max_age=1024">
 </head>
 <body>
   <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
@@ -277,11 +283,13 @@ gulp.task("reveasy", function (argument) {
 ####Output
 ```html
   <!--default out-->
-  <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg?v=7c5d110d">
+  <img data-src="assets/audrey-hepburn.jpg" 
+  	src="assets/audrey-hepburn.jpg?v=7c5d110d">
 ```
 -->
 ```html
-  <img data-src="assets/audrey-hepburn.jpg?v=7c5d110d" src="assets/audrey-hepburn.jpg">
+  <img data-src="assets/audrey-hepburn.jpg?v=7c5d110d" 
+  	src="assets/audrey-hepburn.jpg">
 ```
 
 ```
