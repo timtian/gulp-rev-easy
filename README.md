@@ -17,10 +17,12 @@ gulpfile.js
 <html lang="en">
 <head>
   <title>gulp-rev-easy</title>
-  <link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024">
+  <link type="text/css" rel="stylesheet" media="all" 
+    href="assets/index.css?max_age=1024">
 </head>
 <body>
-  <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
+  <img data-src="assets/audrey-hepburn.jpg" 
+    src="assets/audrey-hepburn.jpg">
   <script src="assets/index.js?max_age=1024"></script>
 </body>
 </html>
@@ -48,10 +50,12 @@ gulp reveasy
 <html lang="en">
 <head>
   <title>gulp-rev-easy</title>
-  <link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024&amp;v=0a1085be">
+  <link type="text/css" rel="stylesheet" media="all"
+    href="assets/index.css?max_age=1024&amp;v=0a1085be">
 </head>
 <body>
-  <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg?v=7c5d110d">
+  <img data-src="assets/audrey-hepburn.jpg" 
+    src="assets/audrey-hepburn.jpg?v=7c5d110d">
   <script src="assets/index.js?max_age=1024&amp;v=3fffb693"></script>
 </body>
 </html>
@@ -59,7 +63,14 @@ gulp reveasy
 
 #Options
 
-
+ - cwd
+ - revType
+ - dateFormat
+ - hashLength
+ - suffix
+ - fileTypes
+ - elementAttributes
+ - transformPath
 
 ##options.cwd
 
@@ -223,7 +234,8 @@ gulp.task("reveasy", function (argument) {
   	href="assets/index.css?max_age=1024">
 </head>
 <body>
-  <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
+  <img data-src="assets/audrey-hepburn.jpg"
+    src="assets/audrey-hepburn.jpg">
   <script src="assets/index.js?max_age=1024&amp;v=3fffb693"></script>
 </body>
 </html>
@@ -309,5 +321,36 @@ gulp.task("reveasy", function (argument) {
 		.pipe(gulp.dest("./dist"))
 })
 ```
+##options.transformPath
+    type:function
+    default:function(orgPath, ver){}
+custom change path
+```
+var gulp = require("gulp");
+var reveasy = require("gulp-rev-easy");
 
+gulp.task("reveasy", function (argument) {
+	gulp.src("test.html")
+		.pipe(reveasy({
+		    transformPath:function(orgpath, ver){
+		    	var newpath = "http://s1.cdn.com/" + orgpath 
+		    	                + (orgpath.indexOf('?') > -1 ? "&" : "?")  
+		    	                + "v=" + ver;
+		    	return newpath;
+		    }
+		}))
+		.pipe(gulp.dest("./dist"))
+})
+```
+####Output
+```html
+  <!--default out-->
+  <img data-src="assets/audrey-hepburn.jpg" 
+  	src="assets/audrey-hepburn.jpg?v=7c5d110d">
+```
+-->
+```html
+<img data-src="assets/audrey-hepburn.jpg"
+    src="http://s1.cdn.com/assets/audrey-hepburn.jpg?v=7c5d110d">
+```
 #Other
