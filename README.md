@@ -35,9 +35,9 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy())
-		.pipe(gulp.dest("./dist"))
+  gulp.src("test.html")
+    .pipe(reveasy())
+    .pipe(gulp.dest("./dist"))
 })
 ```
 
@@ -93,9 +93,9 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({cwd:'./test/'}))
-		.pipe(gulp.dest("./dist"))
+  gulp.src("test.html")
+    .pipe(reveasy({cwd:'./test/'}))
+    .pipe(gulp.dest("./dist"))
 })
 ```
 
@@ -113,20 +113,20 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({revType:'date'}))
-		.pipe(gulp.dest("./dist"))
-		
+  gulp.src("test.html")
+    .pipe(reveasy({revType:'date'}))
+    .pipe(gulp.dest("./dist"))
+    
 })
 ```
 
 ```html
 <link type="text/css" rel="stylesheet" media="all" 
-	href="assets/index.css?max_age=1024">
+  href="assets/index.css?max_age=1024">
 ```
 ```html
 <link type="text/css" rel="stylesheet" media="all" 
-	href="assets/index.css?max_age=1024&amp;v=201503061144">
+  href="assets/index.css?max_age=1024&amp;v=201503061144">
 ```
 
 ## options.dateFormat
@@ -139,16 +139,16 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({revType:'date', dateFormat:'yymmddHHmm'}))
-		.pipe(gulp.dest("./dist"))
-		
+  gulp.src("test.html")
+    .pipe(reveasy({revType:'date', dateFormat:'yymmddHHmm'}))
+    .pipe(gulp.dest("./dist"))
+    
 })
 ```
 #### Output
 ```html
 <link type="text/css" rel="stylesheet" media="all" 
-	href="assets/index.css?max_age=1024&amp;v=1503061144">
+  href="assets/index.css?max_age=1024&amp;v=1503061144">
 ```
 
 ## options.hashLength
@@ -161,10 +161,10 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({revType:'hash', hashLength:5}))
-		.pipe(gulp.dest("./dist"))
-		
+  gulp.src("test.html")
+    .pipe(reveasy({revType:'hash', hashLength:5}))
+    .pipe(gulp.dest("./dist"))
+    
 })
 ```
 #### Output
@@ -172,12 +172,12 @@ gulp.task("reveasy", function (argument) {
 ```html
 <!--default output-->
 <img data-src="assets/audrey-hepburn.jpg" 
-	src="assets/audrey-hepburn.jpg?v=7c5d110d">
+  src="assets/audrey-hepburn.jpg?v=7c5d110d">
 ```
 -->
 ```html
 <img data-src="assets/audrey-hepburn.jpg" 
-	src="assets/audrey-hepburn.jpg?v=7c5d1">
+  src="assets/audrey-hepburn.jpg?v=7c5d1">
 ```
 
 ## options.suffix
@@ -190,10 +190,10 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({suffix:'hashkey'}))
-		.pipe(gulp.dest("./dist"))
-		
+  gulp.src("test.html")
+    .pipe(reveasy({suffix:'hashkey'}))
+    .pipe(gulp.dest("./dist"))
+    
 })
 ```
 #### Output
@@ -217,10 +217,10 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({fileTypes:['js']}))
-		.pipe(gulp.dest("./dist"))
-		
+  gulp.src("test.html")
+    .pipe(reveasy({fileTypes:['js']}))
+    .pipe(gulp.dest("./dist"))
+    
 })
 ```
 #### Output
@@ -231,7 +231,7 @@ gulp.task("reveasy", function (argument) {
 <head>
   <title>gulp-rev-easy</title>
   <link type="text/css" rel="stylesheet" media="all" 
-  	href="assets/index.css?max_age=1024">
+    href="assets/index.css?max_age=1024">
 </head>
 <body>
   <img data-src="assets/audrey-hepburn.jpg"
@@ -265,7 +265,7 @@ gulp.task("reveasy", function (argument) {
         src: 'src'
       },
       css: {
-        name: 'link',
+        name: 'link[type="text/css"]',
         src: 'href'
       },
       img:{
@@ -280,28 +280,28 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({
-		    fileTypes:['img1'],
-		    elementAttributes:{
-		        img1:{
-		            name:'img',
-		            src:'data-src'
-		        }
-		    }))
-		.pipe(gulp.dest("./dist"))
+  gulp.src("test.html")
+    .pipe(reveasy({
+        fileTypes:['img1'],
+        elementAttributes:{
+            img1:{
+                name:'img',
+                src:'data-src'
+            }
+        }))
+    .pipe(gulp.dest("./dist"))
 })
 ```
 #### Output
 ```html
   <!--default out-->
   <img data-src="assets/audrey-hepburn.jpg" 
-  	src="assets/audrey-hepburn.jpg?v=7c5d110d">
+    src="assets/audrey-hepburn.jpg?v=7c5d110d">
 ```
 -->
 ```html
   <img data-src="assets/audrey-hepburn.jpg?v=7c5d110d" 
-  	src="assets/audrey-hepburn.jpg">
+    src="assets/audrey-hepburn.jpg">
 ```
 
 ```js
@@ -309,16 +309,16 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({
-		    fileTypes:['img1'],
-		    elementAttributes:{
-		        img1:{
-		            name:'img',
-		            src:'data-src'
-		        }
-		    }))
-		.pipe(gulp.dest("./dist"))
+  gulp.src("test.html")
+    .pipe(reveasy({
+        fileTypes:['img1'],
+        elementAttributes:{
+            img1:{
+                name:'img',
+                src:'data-src'
+            }
+        }))
+    .pipe(gulp.dest("./dist"))
 })
 ```
 ## options.transformPath
@@ -330,27 +330,27 @@ var gulp = require("gulp");
 var reveasy = require("gulp-rev-easy");
 
 gulp.task("reveasy", function (argument) {
-	gulp.src("test.html")
-		.pipe(reveasy({
-		    transformPath:function(orgpath, ver){
-		    	var newpath = "http://s1.cdn.com/" + orgpath 
-		    	                + (orgpath.indexOf('?') > -1 ? "&" : "?")  
-		    	                + "v=" + ver;
-		    	return newpath;
-		    }
-		}))
-		.pipe(gulp.dest("./dist"))
+  gulp.src("test.html")
+    .pipe(reveasy({
+        transformPath:function(orgpath, ver){
+          var newpath = "http://s1.cdn.com/" + orgpath 
+                          + (orgpath.indexOf('?') > -1 ? "&" : "?")  
+                          + "v=" + ver;
+          return newpath;
+        }
+    }))
+    .pipe(gulp.dest("./dist"))
 })
 ```
 #### Output
 ```html
   <!--default out-->
   <img data-src="assets/audrey-hepburn.jpg" 
-  	src="assets/audrey-hepburn.jpg?v=7c5d110d">
+    src="assets/audrey-hepburn.jpg?v=7c5d110d">
 ```
 -->
 ```html
 <img data-src="assets/audrey-hepburn.jpg"
     src="http://s1.cdn.com/assets/audrey-hepburn.jpg?v=7c5d110d">
 ```
-#Other
+# Other

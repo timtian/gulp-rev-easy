@@ -6,6 +6,7 @@ var fs = require('fs');
 var dateformat = require('dateformat')
 var url = require('url');
 var _ = require('lodash');
+var crypto = require('crypto');
 
 module.exports = function (options) {
 
@@ -26,7 +27,7 @@ module.exports = function (options) {
         src: 'src'
       },
       css: {
-        name: 'link',
+        name: 'link[type="text/css"]',
         src: 'href'
       },
       img:{
@@ -45,6 +46,8 @@ module.exports = function (options) {
 
   return through.obj(function (file, enc, cb) {
 
+    
+    gutil.log("====begin rev:" + gutil.colors.cyan(file.path));
     if (file.isNull()) {
       this.push(file);
       return cb();
@@ -73,22 +76,32 @@ module.exports = function (options) {
 
             if(options.revType == "hash"){
               var filepath = path.join(options.cwd, url.parse(src).pathname);
-              revv = require('crypto')
-                .createHash('md5')
-                .update(
-                  fs.readFileSync(filepath, {encoding: 'utf8'}))
-                .digest("hex").substring(0, options.hashLength);
+              if(fs.existsSync(filepath)){
+                revv = crypto
+                  .createHash('md5')
+                  .update(
+                    fs.readFileSync(filepath, {encoding: 'utf8'}))
+                  .digest("hex").substring(0, options.hashLength);
+              }else{
+                gutil.log(gutil.colors.red(filepath + " not found"));
+              }
             }else{
               revv = dateformat(new Date(), options.dateFormat)
             }
 
-            var newname = options.transformPath(src, revv);
-            $asset.attr(attributes.src, newname);
-            gutil.log(src +"-->" + newname);
+            if(revv != ""){
+              var newname = options.transformPath(src, revv);
+              $asset.attr(attributes.src, newname);
+              gutil.log(src + " --> ", gutil.colors.green(newname));
+            }else{
+              gutil.log(gutil.colors.blue("ignore:rev is empty "), src);
+            }
           }
         }
       }
       file.contents = new Buffer($.html());
+
+      gutil.log("====end rev:" + gutil.colors.cyan(file.path));
     }
     catch (err) {
       this.emit('error', new gutil.PluginError('gulp-rev-easy', err));
