@@ -6,7 +6,7 @@ $ npm install gulp-rev-easy --save-dev
 # Examples
 ```
 assets\index.css
-assets\index.css
+assets\index.js
 test.html
 gulpfile.js
 ```
