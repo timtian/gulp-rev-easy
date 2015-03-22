@@ -8,6 +8,8 @@ var url = require('url');
 var _ = require('lodash');
 var crypto = require('crypto');
 
+var fileverCache = {};
+
 module.exports = function (options) {
 
   var defaultOptions = {
@@ -37,16 +39,9 @@ module.exports = function (options) {
     }
   };
 
-  options = _.merge(defaultOptions, options, function  (a, b) {
-    if(_.isArray(b)){
-      return b;
-    }
-  });
+  options = _.assign(defaultOptions, options);
 
-
-  return through.obj(function (file, enc, cb) {
-
-    
+  return through.obj(function (file, enc, cb) {    
     gutil.log("====begin rev:" + gutil.colors.cyan(file.path));
     if (file.isNull()) {
       this.push(file);
@@ -77,11 +72,19 @@ module.exports = function (options) {
             if(options.revType == "hash"){
               var filepath = path.join(options.cwd, url.parse(src).pathname);
               if(fs.existsSync(filepath)){
-                revv = crypto
-                  .createHash('md5')
-                  .update(
-                    fs.readFileSync(filepath, {encoding: 'utf8'}))
-                  .digest("hex").substring(0, options.hashLength);
+
+                if(fileverCache[filepath] !== undefined){
+                  revv = fileverCache[filepath];
+                  gutil.log(gutil.colors.green(filepath + " found in cache"));
+                }
+                else{
+                  revv = crypto
+                    .createHash('md5')
+                    .update(
+                      fs.readFileSync(filepath, {encoding: 'utf8'}))
+                    .digest("hex").substring(0, options.hashLength);
+                }
+                fileverCache[filepath] = revv;
               }else{
                 gutil.log(gutil.colors.red(filepath + " not found"));
               }
@@ -101,6 +104,7 @@ module.exports = function (options) {
       }
       file.contents = new Buffer($.html());
 
+      gutil.log(fileverCache);
       gutil.log("====end rev:" + gutil.colors.cyan(file.path));
     }
     catch (err) {
