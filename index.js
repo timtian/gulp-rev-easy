@@ -54,7 +54,7 @@ module.exports = function (options) {
     }
 
     try {
-      var $ = cheerio.load(file.contents.toString());
+      var $ = cheerio.load(file.contents.toString(),{decodeEntities: false});
 
       for (var i = 0; i < options.fileTypes.length; i++) {
         var fileType = options.fileTypes[i];
