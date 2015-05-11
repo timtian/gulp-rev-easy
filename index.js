@@ -20,7 +20,13 @@ module.exports = function (options) {
     dateFormat : 'yyyymmddHHMM',
     revType:'hash',
     transformPath : function (orgPath, rev) {
-      var newpath = orgPath +  (orgPath.indexOf('?') > -1 ? '&':'?') + options.suffix + '=' + rev;
+      var reg = new RegExp ('((\\?|\\&|\\&amp\\;)' + options.suffix + '=)([^&\\s]+)', 'gi');
+      var newpath = orgPath;
+      if(reg.test(orgPath)){
+        newpath = orgPath.replace(reg, "$1" + rev);
+      }else{
+        newpath += ((orgPath.indexOf('?') > -1 ? '&':'?') + options.suffix + '=' + rev);
+      }
       return newpath
     },
     elementAttributes :{
