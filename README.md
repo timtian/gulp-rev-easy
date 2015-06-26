@@ -63,7 +63,7 @@ gulp reveasy
 
 # Options
 
- - cwd
+ - base
  - revType
  - dateFormat
  - hashLength
@@ -72,32 +72,17 @@ gulp reveasy
  - elementAttributes
  - transformPath
 
-## options.cwd
+## options.base
 
 
     type:string
-    default:''
+    default:file.cwd
     
-    set working directory for your assets
+    set base directory for your assets
+    <img src='/a/b.png'/> rev will found file in path.join(base, src)
+    options.cwd is deprecate, use options.base or set gulp.src(path, {cwd:mycwd}) instead
 
-#### example
-```js
-/*
-test\assets\index.css
-test\assets\index.css
-test\test.html
-gulpfile.js
-*/
 
-var gulp = require("gulp");
-var reveasy = require("gulp-rev-easy");
-
-gulp.task("reveasy", function (argument) {
-  gulp.src("test.html")
-    .pipe(reveasy({cwd:'./test/'}))
-    .pipe(gulp.dest("./dist"))
-})
-```
 
 ## options.revType
 
