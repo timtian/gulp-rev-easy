@@ -80,7 +80,7 @@ gulp reveasy
     
     set base directory for your assets
     <img src='/a/b.png'/> rev will found file in path.join(base, src)
-    options.cwd is deprecate, use options.base or set gulp.src(path, {cwd:mycwd}) instead
+    options.cwd is obsoleted, use options.base or set gulp.src(path, {cwd:mycwd}) instead
 
 
 
