@@ -73,8 +73,9 @@ module.exports = function(options) {
 
             var baseDir = options.base;
 
-            if (baseDir === '')
+            if (baseDir === '') {
                 baseDir = file.cwd;
+            }
 
             for (var i = 0; i < options.fileTypes.length; i++) {
                 var fileType = options.fileTypes[i];
@@ -89,15 +90,16 @@ module.exports = function(options) {
                     if (src && !src.match(/.*(\/\/).*/)) {
                         var revv = '';
 
-                        if (options.revType == 'hash') {
+                        if (options.revType === 'hash') {
                             var srcpath = url.parse(src).pathname;
-
+                            var filepath = null;
 
                             //if is a /a/b/c/i.png path need a basedir
-                            if ((/^\/{1}[^\/]+/gi).test(srcpath))
+                            if ((/^\/{1}[^\/]+/gi).test(srcpath)) {
                                 filepath = path.join(baseDir, srcpath);
-                            else
+                            } else {
                                 filepath = path.join(path.dirname(file.path), srcpath);
+                            }
 
                             if (fs.existsSync(filepath)) {
 
