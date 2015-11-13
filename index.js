@@ -100,12 +100,11 @@ module.exports = function(options) {
                             } else {
                                 filepath = path.join(path.dirname(file.path), srcpath);
                             }
-
                             if (fs.existsSync(filepath)) {
-
-                                if (fileverCache[filepath] !== undefined) {
-                                    revv = fileverCache[filepath];
-                                    gutil.log(gutil.colors.green(filepath + ' found in cache'));
+                                var mtime = +fs.statSync(filepath).mtime;
+                                if (fileverCache[filepath] && fileverCache[filepath].mtime == mtime) {
+                                    revv = fileverCache[filepath].rev;
+                                    gutil.log(gutil.colors.green('found in cache >>' + filepath + '@' + mtime));
                                 } else {
                                     revv = crypto
                                         .createHash('md5')
@@ -115,7 +114,10 @@ module.exports = function(options) {
                                             }))
                                         .digest('hex').substring(0, options.hashLength);
                                 }
-                                fileverCache[filepath] = revv;
+                                fileverCache[filepath] = {
+                                	mtime:mtime,
+                                	rev:revv
+                                };
                             } else {
                                 gutil.log(gutil.colors.red(filepath + ' not found'));
                             }
