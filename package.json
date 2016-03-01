@@ -29,10 +29,10 @@
   },
   "homepage": "https://github.com/timtian/gulp-rev-easy",
   "dependencies": {
-    "cheerio": "~0.18.0",
-    "dateformat": "~1.0.11",
-    "gulp-util": "~3.0.4",
-    "lodash": "~3.3.1",
-    "through2": "~0.6.3"
+    "cheerio": "~0.19.0",
+    "dateformat": "~1.0.12",
+    "gulp-util": "~3.0.7",
+    "lodash": "~3.10.1",
+    "through2": "~2.0.0"
   }
 }
