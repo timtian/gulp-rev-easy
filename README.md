@@ -379,12 +379,13 @@ gulp.task("reveasy", function (argument) {
 ```
 
 
-## options.ignorePattern
+## options.ignorePattern (only work in plain mode)
     type:RegExp
     default:/<script[^>]*?type=['"]?text\/javascript['"]?[^>]*?>[\s\S]{10,}?<\/script>/gi
     ignore rev content,
     default will ignore any content in <script type=text\/javascript>..</script>
     if you want rev script set to false
+
 
 ```js
 gulp.task("reveasy-plain-mode", function (argument) {
