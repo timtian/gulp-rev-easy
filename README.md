@@ -386,7 +386,7 @@ gulp.task("reveasy", function (argument) {
     default will ignore any content in <script type=text\/javascript>..</script>
     if you want rev script set to false
 
-```
+```js
 gulp.task("reveasy-plain-mode", function (argument) {
 	gulp.src("test.html")
 		.pipe(reveasy({
@@ -403,7 +403,7 @@ gulp.task("reveasy-plain-mode", function (argument) {
 ```
 
 #### In
-```
+```html
 <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
 <script src="assets/index.js?max_age=1024"></script>
 <script type=text/javascript>
@@ -416,8 +416,8 @@ gulp.task("reveasy-plain-mode", function (argument) {
 ```
 
 #### Out
-```
-//default  ignore <script type="text/script">..</script> tag
+```html
+<!--default  ignore <script type="text/script">..</script> tag -->
 <img data-src="assets/audrey-hepburn.jpg?v=6a5f96ce" src="assets/audrey-hepburn.jpg?v=6a5f96ce">
 <script src="assets/index.js?max_age=1024&v=3fffb693"></script>
 <script type=text/javascript>
@@ -429,8 +429,8 @@ gulp.task("reveasy-plain-mode", function (argument) {
 
 ```
 set to ignorePattern:false
-```
-//set to false, rev all
+```html
+<!-- set to false, rev all -->
 <img data-src="assets/audrey-hepburn.jpg?v=6a5f96ce" src="assets/audrey-hepburn.jpg?v=6a5f96ce">
 <script src="assets/index.js?max_age=1024&v=3fffb693"></script>
 <script type=text/javascript>
