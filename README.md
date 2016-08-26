@@ -250,7 +250,7 @@ gulp.task("reveasy", function (argument) {
 </html>
 ```
 
-## options.elementAttributes
+## options.elementAttributes (dom mode)
 ```js
 
     /*
@@ -331,7 +331,7 @@ gulp.task("reveasy", function (argument) {
     .pipe(gulp.dest("./dist"))
 })
 ```
-## options.patterns
+## options.patterns (plain mode)
 
     type : object
     default:
@@ -379,7 +379,7 @@ gulp.task("reveasy", function (argument) {
 ```
 
 
-## options.ignorePattern (only work in plain mode)
+## options.ignorePattern (plain mode)
     type:RegExp
     default:/<script[^>]*?type=['"]?text\/javascript['"]?[^>]*?>[\s\S]{10,}?<\/script>/gi
     ignore rev content,
