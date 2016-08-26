@@ -84,6 +84,7 @@ gulp reveasy
  - fileTypes
  - elementAttributes
  - patterns
+ - ignorePattern
  - transformPath
 
 ## options.base
@@ -401,7 +402,7 @@ gulp.task("reveasy-plain-mode", function (argument) {
 })
 ```
 
-### In
+#### In
 ```
 <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
 <script src="assets/index.js?max_age=1024"></script>
@@ -414,7 +415,7 @@ gulp.task("reveasy-plain-mode", function (argument) {
 
 ```
 
-### Out
+#### Out
 ```
 //default  ignore <script type="text/script">..</script> tag
 <img data-src="assets/audrey-hepburn.jpg?v=6a5f96ce" src="assets/audrey-hepburn.jpg?v=6a5f96ce">
