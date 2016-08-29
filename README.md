@@ -86,6 +86,7 @@ gulp reveasy
  - patterns
  - ignorePattern
  - transformPath
+ - findFile
 
 ## options.base
 
@@ -476,4 +477,24 @@ gulp.task("reveasy", function (argument) {
 <img data-src="assets/audrey-hepburn.jpg"
     src="http://s1.cdn.com/assets/audrey-hepburn.jpg?v=7c5d110d">
 ```
+
+## options.findFile
+
+    type:function
+    default:
+    findFile:
+        function(src, filepath, options){
+            var assertpath = src;
+            var srcpath = url.parse(src).pathname;
+
+            if ((/^\/{1}[^\/]+/gi).test(srcpath)) {
+                assertpath = path.join(options.base, srcpath);
+            } else {
+                assertpath = path.join(path.dirname(filepath), srcpath);
+            }
+            return assertpath;
+        }
+    set custom findFile funciton
+
+
 # Other
