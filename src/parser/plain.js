@@ -14,11 +14,19 @@ parser.parse = function(text, filepath, options) {
         var textList = [];
         var mList = [];
         if(options.ignorePattern){
-            textList = text.split(options.ignorePattern);
+            var tmptextList = text.split(options.ignorePattern);
 
             var m;
+            var mindex = 0;
+            textList.push(tmptextList[mindex]);
             while ((m = options.ignorePattern.exec(text)) !== null) {
-                mList.push(m[0]);
+                if(options.ignoreFilter(m)){
+                    mList.push(m[0]);
+                }else{
+                    textList.push(m[0]);
+                }
+                mindex++;
+                textList.push(tmptextList[mindex]);
             }
         }else{
             textList.push(text);

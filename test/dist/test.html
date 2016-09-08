@@ -1,8 +1,24 @@
-<img data-src="assets/audrey-hepburn.jpg?v=6a5f96ce" src="assets/audrey-hepburn.jpg?v=6a5f96ce">
-<script src="assets/index.js?max_age=1024&v=3fffb693"></script>
-<script type=text/javascript>
-  var test2 = '<img data-src="assets/audrey-hepburn.jpg?v=6a5f96ce" src="assets/audrey-hepburn.jpg?v=6a5f96ce">'
-</script>
-<script type="text/html">
-  <img data-src="assets/audrey-hepburn.jpg?v=6a5f96ce" src="assets/audrey-hepburn.jpg?v=6a5f96ce">
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <title>gulp-rev-easy</title>
+  <link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024&tt=0a1085b">
+</head>
+<body>
+  <script type="text/javascript">
+    var test1 = '<link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024">'
+  </script>
+  <img data-src="assets/audrey-hepburn.jpg?tt=6a5f96c" src="assets/audrey-hepburn.jpg?tt=6a5f96c">
+  <img src='assets/audrey-hepburn.jpg?tt=6a5f96c'>
+  <script src="assets/index.js?max_age=1024&tt=3fffb69"></script>
+  <script type="text/javascript" src="assets/index.js?max_age=1024&tt=3fffb69"></script>
+  <script>
+    var test2 = '<img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">'
+  </script>
+
+  <li @if($router_name=='index') class="curr" @endif><a href="/">home</a></li>
+  <script type="text/html">
+    <img data-src="assets/audrey-hepburn.jpg?tt=6a5f96c" src="assets/audrey-hepburn.jpg?tt=6a5f96c">
+  </script>
+</body>
+</html>

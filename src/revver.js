@@ -104,8 +104,18 @@ var defaultOptions = {
             regex:/(<img[^>]*?\s+src=)("(?:.+?)"|'(?:.+?)')([^>]*?>)/gi
         }
     },
-    ignorePattern:/<script[^>]*?type=['"]?text\/javascript['"]?[^>]*?>[\s\S]{10,}?<\/script>/gi
+    ignorePattern:/<script\b[^<]*(?:(?!<\/script>)<[^<]*)+<\/script>/gi,
+    ignoreFilter:function(match){
+        var type = "text/javascript";
+        var m = (/^<script[^>]type=(.+)>/gi).exec(match[0]);
+        if(m){
+            type = _.trim(m[1], '"\'').toLowerCase();
+        }
+        return type == "text/javascript";
+    }
 };
+
+//ignorePattern:/<script[^>]*?type=['"]?text\/javascript['"]?[^>]*?>[\s\S]{10,}?<\/script>/gi
 
 revver.setOptions = function(options){
     var newObj = _.assign({}, defaultOptions, options);

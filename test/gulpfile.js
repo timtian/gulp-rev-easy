@@ -20,8 +20,10 @@ gulp.task("reveasy-plain-mode", function (argument) {
 	gulp.src("test.html")
 		.pipe(reveasy({
 			revMode:'plain',
+			hashLength:7,
+			revType:'hash',
+			suffix:'tt',
 			fileTypes:['img1', 'img', 'css', 'js'],
-			ignorePattern:false,
 			patterns:{
 				img1:{
 					regex:/(<img[^>]*?\s+data-src=)("(?:.+?)"|'(?:.+?)')([^>]*?>)/gi

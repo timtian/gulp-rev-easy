@@ -1,8 +1,24 @@
-<img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
-<script src="assets/index.js?max_age=1024"></script>
-<script type=text/javascript>
-  var test2 = '<img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">'
-</script>
-<script type="text/html">
+<!doctype html>
+<html lang="en">
+<head>
+  <title>gulp-rev-easy</title>
+  <link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024">
+</head>
+<body>
+  <script type="text/javascript">
+    var test1 = '<link type="text/css" rel="stylesheet" media="all" href="assets/index.css?max_age=1024">'
+  </script>
   <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
-</script>
+  <img src='assets/audrey-hepburn.jpg'>
+  <script src="assets/index.js?max_age=1024"></script>
+  <script type="text/javascript" src="assets/index.js?max_age=1024"></script>
+  <script>
+    var test2 = '<img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">'
+  </script>
+
+  <li @if($router_name=='index') class="curr" @endif><a href="/">home</a></li>
+  <script type="text/html">
+    <img data-src="assets/audrey-hepburn.jpg" src="assets/audrey-hepburn.jpg">
+  </script>
+</body>
+</html>
