@@ -85,6 +85,7 @@ gulp reveasy
  - elementAttributes
  - patterns
  - ignorePattern
+ - ignoreFilter
  - transformPath
  - findFile
 
@@ -443,7 +444,23 @@ set to ignorePattern:false
 </script>
 
 ```
+## options.ignoreFilter (plain mode)
 
+    custom ignoreFilter function
+    default ignore <script type='text/javascript'>...</script> and <script>...</script>
+
+```js
+    //default work with ignorePattern,
+    //custom youself filter,such as script tag with id='ignore' or others
+    ignoreFilter:function(match){
+        var type = "text/javascript";
+        var m = (/^<script[^>]type=(.+)>/gi).exec(match[0]);
+        if(m){
+            type = _.trim(m[1], '"\'').toLowerCase();
+        }
+        return type == "text/javascript";
+    }
+```
 
 ## options.transformPath
     type:function
