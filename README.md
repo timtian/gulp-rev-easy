@@ -1,5 +1,6 @@
 # gulp-rev-easy
 
+
 **upgrade to [1.2.x] add new parse mode:plain, support unwell-formed html, if you want use old mode set revMode to 'dom', now default mode is plain mode**
 
 
