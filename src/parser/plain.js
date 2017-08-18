@@ -47,11 +47,12 @@ parser.parse = function (text, filepath, options) {
                         if (revv !== '') {
                             newsrc = options.transformPath(src, revv);
                             gutil.log(src + ' --> ', gutil.colors.green(newsrc));
+                            return p1 + q + newsrc + q + p3;
                         } else {
                             gutil.log(gutil.colors.blue('ignore:rev is empty'), src);
+                            return match;
                         }
 
-                        return p1 + q + newsrc + q + p3;
                     })
                 }
                 resText.push(revText);
